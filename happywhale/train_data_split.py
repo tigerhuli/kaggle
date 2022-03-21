@@ -2,7 +2,7 @@ import pandas as pd
 import time
 
 if __name__ == '__main__':
-    file_path = 'data/train_num.csv'
+    file_path = 'data/output/train_num.csv'
     data = pd.read_csv(file_path)
 
     imgs = data['image']
@@ -27,10 +27,10 @@ if __name__ == '__main__':
     for img in validation_imgs:
         validation_nums.append(img2num[img])
     validation_data = pd.DataFrame({'image':validation_imgs, 'individual_num':validation_nums})
-    validation_data.to_csv('data/validation_set.csv', index=False)
+    validation_data.to_csv('data/output/validation_set.csv', index=False)
 
     train_nums = []
     for img in train_imgs:
         train_nums.append(img2num[img])
     train_data = pd.DataFrame({'image':train_imgs, 'individual_num':train_nums})
-    train_data.to_csv('data/train_set.csv', index=False)
+    train_data.to_csv('data/output/train_set.csv', index=False)

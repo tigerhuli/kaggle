@@ -16,10 +16,10 @@ def resize_images(in_dir, out_dir):
 
 
 if __name__ == '__main__':
-    test_in_dir = 'data/test_images'
-    test_out_dir = 'data/test_images_256'
-    train_in_dir = 'data/train_images'
-    train_out_dir = 'data/train_images_256'
+    test_in_dir = 'data/archive/seg_img_test'
+    test_out_dir = 'data/output/archive/test_images_256'
+    train_in_dir = 'data/archive/seg_img'
+    train_out_dir = 'data/output/archive/train_images_256'
 
     resize_images(train_in_dir, train_out_dir)
-    resize_images(test_in_dir, test_out_dir)
+    # resize_images(test_in_dir, test_out_dir)

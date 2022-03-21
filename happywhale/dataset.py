@@ -10,16 +10,17 @@ from PIL import Image, ImageOps
 
 class HappyWhaleTrainDataset(Dataset):
     def __init__(self, annotations_file=None, img_dir=None, transform=None, target_transform=None):
-        data = pd.read_csv('data/train_set.csv')
+        data = pd.read_csv('data/output/train_set.csv')
         self.img_labels = data['individual_num']
-        self.img_dir = 'data/train_images_256'
+        self.img_dir = 'data/output/archive/train_images_256'
         self.img_names = data['image']
 
     def __len__(self):
         return len(self.img_labels)
 
     def __getitem__(self, idx):
-        img_path = os.path.join(self.img_dir, self.img_names[idx])
+        image_name = self.img_names[idx].replace('jpg', 'png')
+        img_path = os.path.join(self.img_dir, image_name)
         image = Image.open(img_path)
         image = transforms.ToTensor()(image)
         label = self.img_labels[idx]
@@ -27,16 +28,17 @@ class HappyWhaleTrainDataset(Dataset):
 
 class HappyWhaleValidationDataset(Dataset):
     def __init__(self, annotations_file=None, img_dir=None, transform=None, target_transform=None):
-        data = pd.read_csv('data/validation_set.csv')
+        data = pd.read_csv('data/output/validation_set.csv')
         self.img_labels = data['individual_num']
-        self.img_dir = 'data/train_images_256'
+        self.img_dir = 'data/output/archive/train_images_256'
         self.img_names = data['image']
 
     def __len__(self):
         return len(self.img_labels)
 
     def __getitem__(self, idx):
-        img_path = os.path.join(self.img_dir, self.img_names[idx])
+        image_name = self.img_names[idx].replace('jpg', 'png')
+        img_path = os.path.join(self.img_dir, image_name)
         image = Image.open(img_path)
         image = transforms.ToTensor()(image)
         label = self.img_labels[idx]
